@@ -1,4 +1,4 @@
-﻿package com.jfsoluciones.backend.config;
+package com.jfsoluciones.backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-﻿package com.jfsoluciones.backend.api;
+package com.jfsoluciones.backend.api;
 
 import com.jfsoluciones.backend.api.dto.ContactRequest;
 import io.swagger.v3.oas.annotations.Operation;
