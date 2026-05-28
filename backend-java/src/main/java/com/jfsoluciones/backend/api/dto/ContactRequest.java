@@ -1,0 +1,10 @@
+﻿package com.jfsoluciones.backend.api.dto;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+public record ContactRequest(
+        @NotBlank(message = "El nombre es obligatorio") String nombre,
+        @Email(message = "Correo invalido") @NotBlank(message = "El correo es obligatorio") String correo,
+        @NotBlank(message = "El mensaje es obligatorio") String mensaje
+) {}
