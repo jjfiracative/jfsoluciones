@@ -6,17 +6,20 @@
   template: `
   <header class="navbar">
     <div class="container nav-inner">
-      <a class="logo" href="#inicio"><span class="logo-box">⚡</span><span>JF <b>Soluciones</b></span></a>
+      <a class="logo" href="#inicio"><span class="logo-box">JF</span><span>JF <b>Soluciones</b></span></a>
       <nav [class.open]="menuOpen">
-        <a href="#servicios">Servicios</a>
-        <a href="#portafolio">Portafolio</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
-        <a href="#contacto" class="quote-btn">Cotizar Proyecto</a>
+        <a href="#servicios" (click)="closeMenu()">Servicios</a>
+        <a href="#portafolio" (click)="closeMenu()">Portafolio</a>
+        <a href="#nosotros" (click)="closeMenu()">Nosotros</a>
+        <a href="#contacto" (click)="closeMenu()">Contacto</a>
+        <a href="#contacto" class="quote-btn" (click)="closeMenu()">Cotizar Proyecto</a>
       </nav>
-      <button class="hamburger" (click)="menuOpen=!menuOpen">☰</button>
+      <button class="hamburger" (click)="menuOpen=!menuOpen" [attr.aria-label]="menuOpen ? 'Cerrar menu' : 'Abrir menu'">{{ menuOpen ? '✕' : '☰' }}</button>
     </div>
   </header>
   `
 })
-export class NavbarComponent { menuOpen = false; }
+export class NavbarComponent {
+  menuOpen = false;
+  closeMenu(): void { this.menuOpen = false; }
+}
