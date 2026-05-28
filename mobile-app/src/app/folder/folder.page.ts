@@ -1,5 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+﻿import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-folder',
@@ -7,12 +6,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./folder.page.scss'],
   standalone: false,
 })
-export class FolderPage implements OnInit {
-  public folder!: string;
-  private activatedRoute = inject(ActivatedRoute);
-  constructor() {}
+export class FolderPage {
+  menuOpen = false;
 
-  ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
   }
 }

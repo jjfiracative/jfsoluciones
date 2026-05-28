@@ -1,21 +1,99 @@
-<ion-header [translucent]="true">
+﻿<ion-header translucent="true" class="mobile-header">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <div class="bar">
+      <a class="logo" href="#inicio">
+        <span class="logo-box">JF</span>
+        <span class="logo-text">JF Soluciones</span>
+      </a>
+      <button class="menu-btn" (click)="toggleMenu()" aria-label="Menu">{{ menuOpen ? '✕' : '☰' }}</button>
+    </div>
   </ion-toolbar>
+
+  <div class="menu-panel" [class.open]="menuOpen">
+    <a href="#servicios" (click)="closeMenu()">Servicios</a>
+    <a href="#portafolio" (click)="closeMenu()">Portafolio</a>
+    <a href="#nosotros" (click)="closeMenu()">Nosotros</a>
+    <a href="#contacto" (click)="closeMenu()">Contacto</a>
+    <a href="#contacto" class="cta" (click)="closeMenu()">Cotizar Proyecto</a>
+  </div>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="mobile-page">
+  <section id="inicio" class="hero tech-bg">
+    <span class="badge">SOLUCIONES TECNOLOGICAS</span>
+    <h1>Transformamos tu <span>infraestructura digital</span></h1>
+    <p>Mantenimiento TI, servidores, software, automatizacion y cloud para que tu negocio no se detenga.</p>
+    <a href="#contacto" class="btn btn-primary">Cotizar ahora</a>
+    <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+  </section>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <section class="stats">
+    <article class="stat-card"><div class="icon">↗</div><div><h3>99.9%</h3><p>Uptime garantizado</p></div></article>
+    <article class="stat-card"><div class="icon">▦</div><div><h3>200+</h3><p>Servidores gestionados</p></div></article>
+    <article class="stat-card"><div class="icon">⌘</div><div><h3>50+</h3><p>Proyectos entregados</p></div></article>
+  </section>
+
+  <section id="servicios" class="section">
+    <h2>Todo lo que tu empresa necesita en TI</h2>
+    <p class="subtitle">Desde soporte diario hasta transformacion digital completa.</p>
+    <div class="cards">
+      <article class="service-card" *ngFor="let item of ['Mantenimiento TI','Servidores','Desarrollo Web','Software a Medida','Automatizacion','Power Platform','Dashboards','APIs & Integraciones','Cloud']">
+        <div class="service-icon">✦</div>
+        <h3>{{ item }}</h3>
+        <p>Soluciones empresariales con enfoque en rendimiento, seguridad y escalabilidad.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="nosotros" class="section">
+    <h2>Tecnologia que impulsa empresas</h2>
+    <p class="subtitle">JF Soluciones nacio para ayudar a empresas que necesitan tecnologia de alta calidad, con procesos agiles, equipo senior y precios justos.</p>
+    <div class="cards">
+      <article class="value-card"><h4>Excelencia tecnica</h4><p>Equipo senior con certificaciones y años de experiencia en tecnologias enterprise.</p></article>
+      <article class="value-card"><h4>Comprometidos con tu negocio</h4><p>Tu exito es nuestro exito. Trabajamos como parte de tu equipo.</p></article>
+      <article class="value-card"><h4>Resultados medibles</h4><p>Cada proyecto incluye metricas claras de rendimiento y ROI.</p></article>
+    </div>
+  </section>
+
+  <section id="portafolio" class="section">
+    <h2>Proyectos que hablan por si solos</h2>
+    <div class="cards">
+      <article class="project-card" *ngFor="let p of ['Portal ERP Empresarial','Infraestructura Cloud AWS','Dashboard Power BI Corporativo','API Gateway & Microservicios','Automatizacion RPA Finanzas','Plataforma E-commerce B2B']">
+        <div class="project-top"></div>
+        <div class="project-body">
+          <span class="tag">Enterprise</span>
+          <h3>{{ p }}</h3>
+          <p>Proyecto empresarial con arquitectura escalable y alto rendimiento.</p>
+          <button class="btn btn-outline">Ver detalle</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contacto" class="section">
+    <h2>Comencemos a trabajar juntos</h2>
+    <p class="subtitle">Cuentanos tu proyecto y te respondemos en menos de 24 horas.</p>
+    <article class="contact-card"><strong>Email</strong><p>contacto@jfsoluciones.com</p></article>
+    <article class="contact-card"><strong>WhatsApp</strong><p>+52 123 456 7890</p></article>
+    <article class="contact-card"><strong>Ubicacion</strong><p>Ciudad de Mexico, Mexico</p></article>
+
+    <form class="form">
+      <label>Nombre</label><input placeholder="Tu nombre completo" />
+      <label>Email</label><input placeholder="tu@email.com" />
+      <label>Empresa</label><input placeholder="Nombre de tu empresa" />
+      <label>Servicio de interes</label><select><option>Selecciona un servicio</option></select>
+      <label>Mensaje</label><textarea rows="5" placeholder="Cuentanos sobre tu proyecto..."></textarea>
+      <button type="button" class="btn btn-primary">Enviar mensaje</button>
+    </form>
+  </section>
+
+  <footer class="mobile-footer">
+    <a class="logo" href="#inicio"><span class="logo-box">JF</span><span class="logo-text">JF Soluciones</span></a>
+    <p>Transformamos la tecnologia en ventaja competitiva.</p>
+    <div class="links"><h4>Servicios</h4><a>Mantenimiento TI</a><a>Desarrollo Web</a><a>Cloud & DevOps</a></div>
+    <div class="links"><h4>Soluciones</h4><a>Software a Medida</a><a>Automatizacion</a><a>Dashboards BI</a></div>
+    <div class="links"><h4>Empresa</h4><a>Nosotros</a><a>Portafolio</a><a>Contacto</a></div>
+    <small>● Todos los sistemas operativos</small>
+    <small>© 2026 JF Soluciones. Todos los derechos reservados.</small>
+  </footer>
 </ion-content>
